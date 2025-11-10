@@ -9,6 +9,8 @@ import cine.Clases.ConexionBD;
 import cine.Clases.Cuenta;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 /**
@@ -86,11 +88,12 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
     }
     
     public void GuardarPago(String respuesta){
+        double precioConDescuento = aplicarDescuentoFrecuente();
         try {
             Connection con = conn.Conexion();
             CallableStatement cstmt = con.prepareCall("call insertar_pago(?, ?, ?, ?)");
             cstmt.setInt(1, reserva);
-            cstmt.setDouble(2, total);
+            cstmt.setDouble(2, precioConDescuento);
             cstmt.setString(3, ComboMetodoDePago.getSelectedItem().toString());
             cstmt.setString(4, respuesta);
        
@@ -162,6 +165,33 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
                JOptionPane.showMessageDialog(null, "Error al cancelar asiento: " + e.getMessage());
            }
         }  
+    }
+    
+    private double aplicarDescuentoFrecuente() {
+        int idCuenta;
+        if(cuenta.getId() == 0){
+            idCuenta = cuenta.getIde();
+        }else{
+            idCuenta = cuenta.getId();
+        }
+        try {
+            
+            Connection con = conn.Conexion();
+            String sql = "SELECT precio_con_descuento(?, ?) AS precio_final";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDouble(1, total);
+            ps.setInt(2, idCuenta);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getDouble("precio_final");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error aplicando descuento: " + e.getMessage());
+        }
+        return total; 
     }
     
     
