@@ -74,6 +74,7 @@ public class JIFrmMenu extends javax.swing.JFrame {
             .addGap(0, 278, Short.MAX_VALUE)
         );
 
+        jMenu2.setBackground(new java.awt.Color(139, 220, 224));
         jMenu2.setText("Perfil");
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -82,6 +83,7 @@ public class JIFrmMenu extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu2);
 
+        MenuPerfil.setBackground(new java.awt.Color(255, 204, 213));
         MenuPerfil.setText("File");
 
         jMenuItem1.setText("Buscar");
@@ -102,6 +104,7 @@ public class JIFrmMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(MenuPerfil);
 
+        MenuReportes.setBackground(new java.awt.Color(186, 245, 208));
         MenuReportes.setText("Reportes");
 
         jMenuItem4.setText("Reportes");
@@ -114,6 +117,7 @@ public class JIFrmMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(MenuReportes);
 
+        MenuGestion.setBackground(new java.awt.Color(216, 200, 255));
         MenuGestion.setText("Gestion");
 
         jMenuItem2.setText("Agregar pelicula");

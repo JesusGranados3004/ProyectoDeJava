@@ -197,13 +197,14 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableReportes = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         RBtnPeliculas = new javax.swing.JRadioButton();
         RBtnOcupacion = new javax.swing.JRadioButton();
         RBtnFecha = new javax.swing.JRadioButton();
         RBtnTopTaquillados = new javax.swing.JRadioButton();
         BtnRealizar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TableReportes = new javax.swing.JTable();
         dateInicio = new com.toedter.calendar.JDateChooser();
         dateFin = new com.toedter.calendar.JDateChooser();
         lblInicio = new javax.swing.JLabel();
@@ -213,45 +214,7 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
 
-        buttonGroup1.add(RBtnPeliculas);
-        RBtnPeliculas.setText("Venta por Pelucula");
-        RBtnPeliculas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RBtnPeliculasActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(RBtnOcupacion);
-        RBtnOcupacion.setText("Ocupacion pro Funcion");
-        RBtnOcupacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RBtnOcupacionActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(RBtnFecha);
-        RBtnFecha.setText("Rango de Fechas");
-        RBtnFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RBtnFechaActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(RBtnTopTaquillados);
-        RBtnTopTaquillados.setText("Peliculas Mas Taquillera");
-        RBtnTopTaquillados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RBtnTopTaquilladosActionPerformed(evt);
-            }
-        });
-
-        BtnRealizar.setText("Realizar");
-        BtnRealizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRealizarActionPerformed(evt);
-            }
-        });
-
+        TableReportes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         TableReportes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -265,18 +228,65 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TableReportes);
 
+        jPanel1.setBackground(new java.awt.Color(139, 220, 224));
+
+        buttonGroup1.add(RBtnPeliculas);
+        RBtnPeliculas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        RBtnPeliculas.setText("Venta por Pelicula");
+        RBtnPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RBtnPeliculasActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(RBtnOcupacion);
+        RBtnOcupacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        RBtnOcupacion.setText("Ocupacion por Funcion");
+        RBtnOcupacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RBtnOcupacionActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(RBtnFecha);
+        RBtnFecha.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        RBtnFecha.setText("Rango de Fechas");
+        RBtnFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RBtnFechaActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(RBtnTopTaquillados);
+        RBtnTopTaquillados.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        RBtnTopTaquillados.setText("Peliculas Mas Taquillera");
+        RBtnTopTaquillados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RBtnTopTaquilladosActionPerformed(evt);
+            }
+        });
+
+        BtnRealizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtnRealizar.setText("Realizar");
+        BtnRealizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRealizarActionPerformed(evt);
+            }
+        });
+
+        lblInicio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblInicio.setText("Inicio:");
 
         lblFinal.setText("Fin:");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(RBtnPeliculas)
                         .addGap(53, 53, 53)
                         .addComponent(RBtnOcupacion)
@@ -284,49 +294,54 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
                         .addComponent(RBtnFecha)
                         .addGap(53, 53, 53)
                         .addComponent(RBtnTopTaquillados))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
                         .addComponent(lblInicio)
-                        .addGap(29, 29, 29)
-                        .addComponent(dateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(dateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
                         .addComponent(lblFinal)
                         .addGap(18, 18, 18)
                         .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
+                        .addGap(76, 76, 76)
                         .addComponent(BtnRealizar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(125, 141, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RBtnPeliculas)
+                    .addComponent(RBtnTopTaquillados)
+                    .addComponent(RBtnOcupacion)
+                    .addComponent(RBtnFecha))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BtnRealizar)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblFinal)
+                        .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblInicio)
+                        .addComponent(dateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(RBtnPeliculas))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(RBtnTopTaquillados)))
-                        .addComponent(RBtnOcupacion, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(RBtnFecha, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(dateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblInicio)
-                                .addComponent(lblFinal)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(dateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(BtnRealizar)))
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
         );
 
         pack();
@@ -373,6 +388,7 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private com.toedter.calendar.JDateChooser dateFin;
     private com.toedter.calendar.JDateChooser dateInicio;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFinal;
     private javax.swing.JLabel lblInicio;

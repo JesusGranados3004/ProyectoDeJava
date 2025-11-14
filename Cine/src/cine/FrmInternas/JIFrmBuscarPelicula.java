@@ -107,32 +107,24 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        BtnComprar = new javax.swing.JButton();
+        BtnBuscar = new javax.swing.JButton();
+        ComboBuscar = new javax.swing.JComboBox<>();
         LblImagen = new javax.swing.JLabel();
         LblDirecto = new javax.swing.JLabel();
         LblDuracion = new javax.swing.JLabel();
         LblGenero = new javax.swing.JLabel();
         LblSinopsis = new javax.swing.JLabel();
         LblTitulo = new javax.swing.JLabel();
-        BtnComprar = new javax.swing.JButton();
-        BtnBuscar = new javax.swing.JButton();
-        ComboBuscar = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
 
-        LblImagen.setText("jLabel1");
+        jPanel1.setBackground(new java.awt.Color(139, 220, 224));
 
-        LblDirecto.setText("jLabel2");
-
-        LblDuracion.setText("jLabel3");
-
-        LblGenero.setText("jLabel4");
-
-        LblSinopsis.setText("jLabel5");
-
-        LblTitulo.setText("jLabel6");
-
+        BtnComprar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BtnComprar.setText("Reservar");
         BtnComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +132,7 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
             }
         });
 
+        BtnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BtnBuscar.setText("Buscar");
         BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,60 +140,93 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
             }
         });
 
+        ComboBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ComboBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        LblImagen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LblImagen.setText("jLabel1");
+
+        LblDirecto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LblDirecto.setText("jLabel2");
+
+        LblDuracion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LblDuracion.setText("jLabel3");
+
+        LblGenero.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LblGenero.setText("jLabel4");
+
+        LblSinopsis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LblSinopsis.setText("jLabel5");
+
+        LblTitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LblTitulo.setText("jLabel6");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(LblDirecto)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(LblSinopsis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(ComboBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(BtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(61, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(LblGenero)
+                            .addComponent(LblTitulo)
+                            .addComponent(LblImagen))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LblDuracion)
+                        .addGap(79, 79, 79))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(194, 194, 194)
+                .addComponent(BtnComprar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnBuscar)
+                    .addComponent(ComboBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(LblImagen)
+                .addGap(91, 91, 91)
+                .addComponent(LblTitulo)
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LblDirecto)
+                    .addComponent(LblGenero)
+                    .addComponent(LblDuracion))
+                .addGap(37, 37, 37)
+                .addComponent(LblSinopsis, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(BtnComprar)
+                .addGap(46, 46, 46))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LblSinopsis, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(LblDirecto)
-                                        .addGap(124, 124, 124)
-                                        .addComponent(LblGenero))
-                                    .addComponent(LblTitulo)
-                                    .addComponent(LblImagen))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(LblDuracion)))
-                        .addGap(76, 76, 76))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ComboBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(BtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(49, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(BtnComprar)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnBuscar)
-                    .addComponent(ComboBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(95, 95, 95)
-                .addComponent(LblImagen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(LblTitulo)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblDirecto)
-                    .addComponent(LblGenero)
-                    .addComponent(LblDuracion))
-                .addGap(27, 27, 27)
-                .addComponent(LblSinopsis, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(BtnComprar)
-                .addGap(27, 27, 27))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -237,5 +263,6 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
     private javax.swing.JLabel LblImagen;
     private javax.swing.JLabel LblSinopsis;
     private javax.swing.JLabel LblTitulo;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

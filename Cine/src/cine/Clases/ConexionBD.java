@@ -4,34 +4,53 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
+/**
+ * Clase encargada de manejar la conexión con la base de datos MySQL.
+ */
 public class ConexionBD {
+    // Objeto para almacenar la conexión
     Connection conn = null;
     
-    String USER = "root";
-    String PASSWORD = "3004";
-    String NAME = "Cine";
-    String IP = "localhost";
-    String PORT = "3306";
+    // Credenciales y parámetros de conexión
+    String USER = "root";       // Usuario de la base de datos
+    String PASSWORD = "3004";   // Contraseña del usuario
+    String NAME = "Cine";       // Nombre de la base de datos
+    String IP = "localhost";    // Dirección del servidor (en este caso, local)
+    String PORT = "3306";       // Puerto de conexión predeterminado de MySQL
     
-    String cadena = "jdbc:mysql://"+ IP +":"+PORT+"/"+NAME;
+    // Cadena de conexión JDBC construida con los datos anteriores
+    String cadena = "jdbc:mysql://" + IP + ":" + PORT + "/" + NAME;
     
-    public Connection Conexion(){
+    /**
+     * Método que establece la conexión con la base de datos.
+     * @return un objeto Connection si la conexión es exitosa, de lo contrario retorna null.
+     */
+    public Connection Conexion() {
         try {
+            // Cargar el controlador de MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(cadena,USER,PASSWORD);
+            
+            // Establecer la conexión con la base de datos
+            conn = DriverManager.getConnection(cadena, USER, PASSWORD);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "la conexion no fue exitosa");
+            // Mensaje en caso de error al conectar
+            JOptionPane.showMessageDialog(null, "La conexión no fue exitosa");
         }
         return conn;
     }
     
-    public void CloseConnection(){
+    /**
+     * Método que cierra la conexión con la base de datos si está abierta.
+     */
+    public void CloseConnection() {
         try {
-            if(conn != null && !conn.isClosed()){
+            // Verifica si la conexión está activa antes de cerrarla
+            if (conn != null && !conn.isClosed()) {
                 conn.close();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "la conexion no fue cerrada");
+            // Mensaje en caso de error al cerrar la conexión
+            JOptionPane.showMessageDialog(null, "La conexión no fue cerrada");
         }
     }
 }
