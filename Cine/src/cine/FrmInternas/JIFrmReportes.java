@@ -34,6 +34,8 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
         ajustarVisibilidadFechas();
     }
 
+    // se llena la tabla y se consultan los datos necesarios que la tabla requere
+    // para asi mostrar el reporte de cada pelicula
     private void ejecutarReporteVentasPorPelicula() {
         DefaultTableModel modelo = new DefaultTableModel(
             new String[]{"Película", "Boletos vendidos", "Ingresos"}, 0);
@@ -61,6 +63,7 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
         }
     }
     
+    // aqui se consulta la cantidad de asientos que se ocuparon por cada funcion
     private void ejecutarReporteOcupacionPorFuncion() {
         DefaultTableModel modelo = new DefaultTableModel(
             new String[]{"Función ID", "Película", "Sala", "Capacidad", "Ocupados", "% Ocupación"}, 0);
@@ -92,6 +95,9 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
         }
     }
     
+    // aqui se consulta las ventas de las peliculas por un rango de fechas 
+    // y se lle na la tabla y se hace una validacion interna para ver si se a seleccionado 
+    // el rango de fechas
     private void ejecutarVentasPorRangoConCalendar() {
        
         Date Inicio = dateInicio.getDate();
@@ -136,6 +142,8 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
         }
     }
     
+    // y aqui se consulta a la base de datos el top de peliculas mas taquilladas
+    // y se llena la tabla
     private void ejecutarReportePeliculasMasTaquilleras() {
         DefaultTableModel modelo = new DefaultTableModel(
             new String[]{"Película", "Boletos vendidos", "Ingresos totales"}, 0);
@@ -165,6 +173,9 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
         }
     }
     
+    // para ajustar la visivilidad de los componentes para seleccionar 
+    // la fecha si el boton que ejecuta la consulta por rango de fechas es seleccionada 
+    // se muestra si no no se muestran permanecen ocultas
     private void ajustarVisibilidadFechas() {
         if(RBtnFecha.isSelected()){
             dateInicio.setVisible(true);
@@ -182,6 +193,8 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
         
     }
     
+    // para limpiar la tabla cuando se seleccione el rango de fecha 
+    // para asi no mostrar informacion de otra
     private void limpiarTabla(JTable tabla) {
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         modelo.setRowCount(0);
@@ -346,7 +359,7 @@ public class JIFrmReportes extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    // segun el boton que se seleccione se ejecutara uno de los metodos que le corresponda
     private void RBtnPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBtnPeliculasActionPerformed
         // TODO add your handling code here:
         ejecutarReporteVentasPorPelicula();

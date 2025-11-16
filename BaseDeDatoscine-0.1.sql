@@ -146,10 +146,10 @@ BEGIN
 END //
 
 CREATE PROCEDURE GuardarFuncion(
-    IN p_pelicula_id INT,
-    IN p_sala_id INT,
-    IN p_inicio DATETIME,
-    IN p_precio_base DOUBLE,
+     p_pelicula_id INT,
+     p_sala_id INT,
+     p_inicio DATETIME,
+     p_precio_base DOUBLE,
     OUT p_funcion_id INT
 )
 BEGIN
@@ -227,9 +227,9 @@ BEGIN
 END//
 
 CREATE PROCEDURE insertar_reserva(
-    IN p_id_cliente   INT,
-    IN p_id_empleado  INT, 
-    IN p_total        DOUBLE,
+     p_id_cliente   INT,
+     p_id_empleado  INT, 
+     p_total        DOUBLE,
     OUT p_reserva_id   INT
 )
 BEGIN
@@ -395,6 +395,25 @@ BEGIN
     VALUES (p_usuario, p_password, 'cliente', LAST_INSERT_ID());
 END //
 
+CREATE PROCEDURE empleado_cuenta(
+     p_nombre   VARCHAR(150),
+     p_apellido VARCHAR(150),
+     p_rol      VARCHAR(50),
+     p_email    VARCHAR(150),
+     p_telefono VARCHAR(30),
+     p_usuario  VARCHAR(50),
+     p_password VARCHAR(255)
+)
+BEGIN
+
+    INSERT INTO Empleado (nombre, apellido, rol, email, telefono)
+    VALUES (p_nombre, p_apellido, p_rol, p_email, p_telefono);
+
+   
+    INSERT INTO Cuenta (usuario, password, rol, empleado_id)
+    VALUES (p_usuario, p_password, p_rol, LAST_INSERT_ID());
+END //
+
 CREATE PROCEDURE perfil(
     IN p_tipo  ENUM('cliente','empleado','admin'),
     IN p_id    INT
@@ -491,35 +510,47 @@ BEGIN
     RETURN ROUND(p_precio_base * (1 - v_descuento / 100), 2);
 END //
 
-insert into genero (nombre_genero) values
-('Acción');//
+CREATE PROCEDURE insertar_sala(
+     p_nombre    VARCHAR(100),
+     p_capacidad INT
+)
+BEGIN
+    INSERT INTO Sala (nombre, capacidad)
+    VALUES (p_nombre, p_capacidad);
+END //
 
-insert into genero (nombre_genero) values
-('Aventura');//
+CALL cliente_cuenta(
+  'Jesus',
+  'Granados',
+  'jesusgranados@gmail.com',
+  '3001234567',
+  'jesus3',
+  'jesus3003'
+);//
 
-insert into genero (nombre_genero) values
-('Comedia');//
+CALL empleado_cuenta(
+  'Carlos',
+  'Gómez',
+  'admin',
+  '3109876543',
+  'carlos.gomez@gmail.com',
+  'jesus',
+  'jesus3004'
+);//
 
-INSERT INTO Cliente (nombre, apellido, email, telefono)
-VALUES ('Juan', 'Pérez', 'juan.perez@example.com', '3001234567');//
+CALL empleado_cuenta(
+  'brayan',
+  'fontecha',
+  'empleado',
+  '3109876543',
+  'brayan.fontecha@gmail.com',
+  'brayan',
+  '12345'
+);//
 
-INSERT INTO Empleado (nombre, apellido, rol, telefono, email)
-VALUES ('Carlos', 'Gómez', 'Administrador', '3109876543', 'carlos.gomez@cine.com');//
-
-insert into Cuenta(usuario, password, rol,cliente_id, empleado_id) 
-values ('jesusgranados','jesus3004','admin',null,1);//
-
-insert into Cuenta(usuario, password, rol,cliente_id, empleado_id) 
-values ('jesusgranados3','jesus3003','cliente',1,null);//
-
-insert into sala (nombre, capacidad)
-values('VIP',20);//
-
-insert into sala (nombre, capacidad)
-values('Normal',40);//
-
-insert into sala (nombre, capacidad)
-values('3D',40);//
+CALL insertar_sala('VIP', 20);//
+CALL insertar_sala('Normal', 40);//
+CALL insertar_sala('3D', 40);//
 
 CALL AgregarPelicula(
   'Inception',
@@ -571,4 +602,37 @@ CALL AgregarPelicula(
   'Terror'
 );//
 
-SELECT * FROM asiento;//
+
+CALL GuardarFuncion(1, 1, '2025-11-20 18:00:00', 15000, @f1);//
+CALL GuardarFuncion(3, 2, '2025-11-20 20:00:00', 18000, @f2);//
+CALL GuardarFuncion(4, 3, '2025-11-21 16:00:00', 20000, @f3);//
+
+CALL InsertarAsiento(1, 1, 1, @a1);//
+CALL InsertarAsiento(2, 1, 1, @a2);//
+CALL InsertarAsiento(3, 1, 1, @a3);//
+
+CALL InsertarAsiento(5, 2, 2, @a4);//
+CALL InsertarAsiento(6, 2, 2, @a5);//
+
+CALL InsertarAsiento(10, 3, 3, @a6);//
+CALL InsertarAsiento(11, 3, 3, @a7);//
+CALL InsertarAsiento(12, 3, 3, @a8);//
+
+CALL insertar_reserva(1, NULL, 45000, @r1);//
+CALL InsertarTicket(1, 1, 1, 15000);//
+CALL InsertarTicket(1, 1, 2, 15000);//
+CALL InsertarTicket(1, 1, 3, 15000);//
+CALL insertar_pago(1, 45000, 'tarjeta', '1234');//
+
+CALL insertar_reserva(1, NULL, 36000, @r2);//
+CALL InsertarTicket(2, 2, 4, 18000);//
+CALL InsertarTicket(2, 2, 5, 18000);//
+CALL insertar_pago(2, 36000, 'efectivo', NULL);//
+
+CALL insertar_reserva(1, NULL, 60000, @r3);//
+CALL InsertarTicket(3, 3, 6, 20000);//
+CALL InsertarTicket(3, 3, 7, 20000);//
+CALL InsertarTicket(3, 3, 8, 20000);//
+CALL insertar_pago(3, 60000, 'tarjeta', '5678');//
+
+SELECT * FROM funcion;//

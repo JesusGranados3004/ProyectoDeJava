@@ -49,6 +49,8 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
         AgregarAsientos();
     }
     
+    // aqui ejecutamos un metodo para mostrar las funciones de la pelicula seleccionada
+    //en una tabla para la seleccion de la funcion que quiere el usuario
     public void mostrarInfo(Peliculas pelicula) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(encabezado);
@@ -58,6 +60,8 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
         LlenarTablaFuncion(TableFuncion, modelo, peliculaId); 
     }
     
+    // se agregan los asientos al panel para que el usuario seleccione el que quiere 
+    // y ademas se guardan en una lista para calcular el total por las sillas seleccionadas
     public void AgregarAsientos() {
         PanelSilla.removeAll();
 
@@ -90,6 +94,7 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
         PanelSilla.repaint();
     }
     
+    // aqui se calcula el total por cada silla seleccionada
     public void calcularTotal(){
         int seleccionadas = 0;
         for(int i = 0; i < listabotones.size(); i++){
@@ -102,6 +107,7 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
         total = seleccionadas * precio;
     }
     
+    // aqui guardamos la sillas en la base de datos y guardamos las id en una lista para utilizar en otros metodos
     private ArrayList<Integer> actualizarListaSillas(JIFrmTicket ticket) {
         ArrayList<Integer> seleccionadas = new ArrayList<>();
         for (int i = 0; i < listabotones.size(); i++) {
@@ -155,6 +161,7 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
         return seleccionadas;   
     }
     
+    // aqui se consulta a la base de datos los datos necesarios para llenar la tabla
     public void LlenarTablaFuncion(JTable tabla, DefaultTableModel modelo, int peliculaId) {
         modelo.setRowCount(0);          
         idsFuncion.clear();
@@ -191,6 +198,8 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
         }
     }
     
+    // aqui consultamos a la base de datos los datos de la sala que esta relacionada con 
+    // con la funcion seleccionada para asi saber la cantidad de sillas que se quieren mostrar
     public int buscarSala(String sala){
         int cantidad = 0;
         try {
@@ -314,7 +323,9 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    // se activo un evento de mouseclick para que el usuario sleccionara la funcion que desea y
+    // poder obtener esos datos para otros metodos 
     private void TableFuncionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableFuncionMouseClicked
         // TODO add your handling code here:
         int fila = TableFuncion.getSelectedRow();
@@ -336,6 +347,7 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
         AgregarAsientos();
     }//GEN-LAST:event_TableFuncionMouseClicked
 
+    // aqui inicialisamos JIFrmTicket para que nos direccione para esa ventana y le mandamos la informacion que nesecita
     private void BtnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservarActionPerformed
         // TODO add your handling code here:
 

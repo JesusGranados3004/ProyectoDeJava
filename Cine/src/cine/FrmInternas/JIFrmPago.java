@@ -45,12 +45,17 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
         llenarCombo();
         String precio = Double.toString(total);
         TxtPrecio.setText(precio);
+        
+        // aqui es para ver si es la tarjeta la que esta seleccionada para mostrar un txtbox
+        // que permite el ingreso del numero de la targuta
         ComboMetodoDePago.addActionListener(e -> {
             boolean esTarjeta = "Tarjeta".equals(ComboMetodoDePago.getSelectedItem());
             Lblmetodo.setVisible(esTarjeta);
             TxtMetodoDePago.setVisible(esTarjeta);
         });
         
+        // aqui lo mismo que en la otra captura cuando el usuario unde x para eliminar las 
+        // reservas que se an echo
         addInternalFrameListener(new javax.swing.event.InternalFrameAdapter() {
             @Override
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent e) {
@@ -65,6 +70,7 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
     }
     
+    // aqui se llena el combo para seleccionar el metodo de pago
     public void llenarCombo(){
         ComboMetodoDePago.removeAllItems();
         ComboMetodoDePago.addItem("Seleccione...");
@@ -74,6 +80,8 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
         }
     }
     
+    // aqui se hace la validacion para saber cual es y si es tarjeta en una variable se guardan los ultimos 4
+    // digitos de la tarjeta y si es efectivo el Lblmetodoy el TxtMetodoDePago no se mustra 
     public String seleccion(){
         String respuesta;
         if(ComboMetodoDePago.getSelectedItem().equals("Tarjeta")){
@@ -81,12 +89,13 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
             respuesta = numeroCompleto.substring(numeroCompleto.length() - 4);
         }else{
             Lblmetodo.setVisible(false);
-            ComboMetodoDePago.setVisible(false);
+            TxtMetodoDePago.setVisible(false);
             respuesta = null;
         }
         return respuesta;
     }
     
+    // para guardar los datos en la base de datos del pago
     public void GuardarPago(String respuesta){
         double precioConDescuento = aplicarDescuentoFrecuente();
         try {
@@ -108,6 +117,7 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
         }
     }
     
+    // para guardar la informacion del ticket en la base de datos
     public void GuardarTicket(){
         int cantidad = asientoId.size();
         double precio = total / cantidad;
@@ -131,6 +141,8 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
         }
     }
     
+    
+    // para eleminar los datos´para la base de datos de la reserva segun id reserva
     private void cancelarReserva() {
         try{
             Connection con = conn.Conexion();
@@ -140,17 +152,13 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
             cstmt.setInt(1, reserva);
             int filas = cstmt.executeUpdate();
 
-            if (filas > 0) {
-                JOptionPane.showMessageDialog(null, "Reserva cancelada");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontró la reserva");
-            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al cancelar reserva: " + e.getMessage());
         }
     }
     
+    // aqui es igual para eliminar los asientos segun la id de los asientos que estan guardados en la lista 
     private void cancelarAsiento() {
         for (int i = 0; i < asientoId.size(); i++) {
             int idAsiento = asientoId.get(i);
@@ -167,6 +175,8 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
         }  
     }
     
+    
+    // aqui llamamos a la funcion para aplicar un descuento por mayoria de compra 
     private double aplicarDescuentoFrecuente() {
         int idCuenta;
         if(cuenta.getId() == 0){
@@ -314,6 +324,7 @@ public class JIFrmPago extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtPrecioActionPerformed
 
+    // se verifica si hay un metodo de pago selecionado para correr los metodos de guardado
     private void BtnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPagarActionPerformed
         // TODO add your handling code here:
         if(ComboMetodoDePago.getSelectedIndex() > 0 ){

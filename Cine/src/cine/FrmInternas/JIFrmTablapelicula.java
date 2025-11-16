@@ -6,6 +6,7 @@ package cine.FrmInternas;
 
 
 import cine.Clases.ConexionBD;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +25,7 @@ public class JIFrmTablapelicula extends javax.swing.JInternalFrame {
      */
     
     ConexionBD conn;
-    String [] encabezado = {"ID","Titulo","Genero","Director","Duracion","Estreno","Idioma","Sinopsis"};
+    String [] encabezado = {"Titulo","Genero","Director","Duracion","Estreno","Idioma","Sinopsis"};
     
     public JIFrmTablapelicula() {
         initComponents();
@@ -32,6 +33,7 @@ public class JIFrmTablapelicula extends javax.swing.JInternalFrame {
         mostrarInfo();
     }
 
+    // se ejecuta el metodo para consultar los datos y se llena la tabla
     public void mostrarInfo(){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(encabezado);
@@ -39,19 +41,18 @@ public class JIFrmTablapelicula extends javax.swing.JInternalFrame {
         LlenarTablaPelicula(TableRegistros, modelo);
     }
     
-    
+    // el metodo para llamar los datos necesarios para llenar la tabla de las peliculas
     public void LlenarTablaPelicula(JTable TableRegistros,DefaultTableModel modelo){
         try {
             Connection con = conn.Conexion();
             
-            String sql = "SELECT p.pelicula_id,p.titulo,p.director,g.nombre_genero AS genero, p.duracion_minutes,p.fecha_estreno,p.idioma,p.sinopsis FROM pelicula p JOIN pelicula_genero pg ON p.pelicula_id = pg.pelicula_id JOIN genero g ON pg.genero_id = g.genero_id;";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            ResultSet resultado = stmt.executeQuery();
+            String sql = " call peliculas_completo()";
+            CallableStatement cstmt = con.prepareCall(sql);
+            ResultSet resultado = cstmt.executeQuery();
             while(resultado.next()){
                 modelo.addRow(new Object[]{
-                    resultado.getInt("pelicula_id"),
                     resultado.getString("titulo"),
-                    resultado.getString("genero"),
+                    resultado.getString("nombre_genero"),
                     resultado.getString("director"),
                     resultado.getString("duracion_minutes"),
                     resultado.getString("fecha_estreno"),

@@ -32,6 +32,8 @@ public class JIFrmPerfil extends javax.swing.JInternalFrame {
         conn = new ConexionBD();
         this.cuentas = cuenta;
         tipo = cuentas.getRol();
+        
+        // aqui se hace una validacion para saber la id del cliente o el empleado
         idPersona = cuentas.getId();
         if(idPersona == 0){
             idPersona= cuenta.getIde();
@@ -39,6 +41,10 @@ public class JIFrmPerfil extends javax.swing.JInternalFrame {
         mostrarPerfilPorId();
     }
     
+    
+    // aqui se solicitan los datos que se necesitan para mostrar 
+    // en la ventana y se hace una validacion para mostrar un 
+    // lbl que se muestra dependiendo del rol que tiene la persona
     public void mostrarPerfilPorId() {
         
         try{
@@ -224,7 +230,9 @@ public class JIFrmPerfil extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    // aqui se cierra la sesion y cierra la ventana perfil y el principal para redireccionar al login 
+    // con SwingUtilities se pregunta por la ventana padre y dispose para cerrar las dos ventanas
     private void BtnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarSesionActionPerformed
         // TODO add your handling code here:
         

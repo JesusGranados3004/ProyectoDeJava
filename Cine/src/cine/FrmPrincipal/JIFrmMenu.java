@@ -6,6 +6,7 @@ package cine.FrmPrincipal;
 
 import cine.FrmInternas.JIFrmAgregarPeliculas;
 import cine.FrmInternas.JIFrmReportes;
+import cine.FrmInternas.JIFrmRegistrarEmpleado;
 import cine.FrmInternas.JIFrmPerfil;
 import cine.FrmInternas.JIFrmTablaTicket;
 import cine.FrmInternas.JIFrmFunciones;
@@ -28,6 +29,9 @@ public class JIFrmMenu extends javax.swing.JFrame {
         initComponents();
     }
     
+    
+    // para poder acceder a estos componentes desde otro JIFrm o Frm
+    //y asi poder mostrarlos o no
     public void mostrarMenuGestion(boolean mostrar) {
         MenuGestion.setVisible(mostrar);
     }
@@ -35,9 +39,10 @@ public class JIFrmMenu extends javax.swing.JFrame {
         MenuReportes.setVisible(mostrar);
     }
     
-    public void ventanaMenu(){
-        this.dispose();
+    public void mostrarMenuRegistrar(boolean mostrar){
+        MenuRegistrar.setVisible(mostrar);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,6 +65,7 @@ public class JIFrmMenu extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         MenuFuncion = new javax.swing.JMenuItem();
+        MenuRegistrar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,6 +152,14 @@ public class JIFrmMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(MenuGestion);
 
+        MenuRegistrar.setText("Registrar");
+        MenuRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuRegistrarMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(MenuRegistrar);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,6 +176,7 @@ public class JIFrmMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //redirecciones a otros JIFrm
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         JIFrmAgregarPeliculas agregar = new JIFrmAgregarPeliculas();
@@ -218,6 +233,13 @@ public class JIFrmMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void MenuRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuRegistrarMouseClicked
+        // TODO add your handling code here:
+        JIFrmRegistrarEmpleado empleado = new JIFrmRegistrarEmpleado();
+        PrinsipalDesktop.add(empleado);
+        empleado.setVisible(true);
+    }//GEN-LAST:event_MenuRegistrarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +280,7 @@ public class JIFrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuFuncion;
     private javax.swing.JMenu MenuGestion;
     private javax.swing.JMenu MenuPerfil;
+    private javax.swing.JMenu MenuRegistrar;
     private javax.swing.JMenu MenuReportes;
     private javax.swing.JDesktopPane PrinsipalDesktop;
     private javax.swing.JMenu jMenu2;

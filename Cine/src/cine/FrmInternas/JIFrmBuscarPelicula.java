@@ -32,7 +32,7 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
         canbiarTamaño();
     }
     
-    
+    // aqui se cabian los datos por la informacin del ticket segun la pelicula seleccionada
     public void SelecionPelicula(){
         pelicula = (Peliculas) ComboBuscar.getSelectedItem();
         if(ComboBuscar.getSelectedIndex() > 0){
@@ -47,13 +47,14 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
         
     }
     
+    // esto es para cuando no hay nada seleccionado no se vea todo grande el 
+    // panel y ya cuando se seleccione tome el tamaño necesario para mostrar la informacion de la pelicula
     public void canbiarTamaño(){
         if(ComboBuscar.getSelectedIndex() == 0){
             this.setSize(560, 120);
             LblDirecto.setVisible(false);
             LblDuracion.setVisible(false);
             LblGenero.setVisible(false);
-            LblImagen.setVisible(false);
             LblSinopsis.setVisible(false);
             LblTitulo.setVisible(false);
             BtnComprar.setVisible(false);
@@ -62,13 +63,13 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
             LblDirecto.setVisible(true);
             LblDuracion.setVisible(true);
             LblGenero.setVisible(true);
-            LblImagen.setVisible(true);
             LblSinopsis.setVisible(true);
             LblTitulo.setVisible(true);
             BtnComprar.setVisible(true);
         }
     }
     
+    // aqui consultamos y rrellenamos el combo con la infomacion dada de la base de datos de las peliculas
     public void LlenarComboPeliculas(JComboBox Combo,Peliculas pelicula){
         try {
             Connection con = conn.Conexion();
@@ -111,7 +112,6 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
         BtnComprar = new javax.swing.JButton();
         BtnBuscar = new javax.swing.JButton();
         ComboBuscar = new javax.swing.JComboBox<>();
-        LblImagen = new javax.swing.JLabel();
         LblDirecto = new javax.swing.JLabel();
         LblDuracion = new javax.swing.JLabel();
         LblGenero = new javax.swing.JLabel();
@@ -121,8 +121,10 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel1.setBackground(new java.awt.Color(139, 220, 224));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnComprar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BtnComprar.setText("Reservar");
@@ -131,6 +133,7 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
                 BtnComprarActionPerformed(evt);
             }
         });
+        jPanel1.add(BtnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 453, -1, -1));
 
         BtnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BtnBuscar.setText("Buscar");
@@ -139,95 +142,37 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
                 BtnBuscarActionPerformed(evt);
             }
         });
+        jPanel1.add(BtnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 26, 100, -1));
 
         ComboBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ComboBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        LblImagen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        LblImagen.setText("jLabel1");
+        jPanel1.add(ComboBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 26, 251, -1));
 
         LblDirecto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         LblDirecto.setText("jLabel2");
+        jPanel1.add(LblDirecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 215, -1, -1));
 
         LblDuracion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         LblDuracion.setText("jLabel3");
+        jPanel1.add(LblDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 215, -1, -1));
 
         LblGenero.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         LblGenero.setText("jLabel4");
+        jPanel1.add(LblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 215, -1, -1));
 
         LblSinopsis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        LblSinopsis.setText("jLabel5");
+        LblSinopsis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LblSinopsis.setToolTipText("");
+        LblSinopsis.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        LblSinopsis.setMaximumSize(new java.awt.Dimension(300, 15));
+        LblSinopsis.setPreferredSize(new java.awt.Dimension(400, 80));
+        jPanel1.add(LblSinopsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 400, 140));
 
         LblTitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         LblTitulo.setText("jLabel6");
+        jPanel1.add(LblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 128, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(LblDirecto)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(LblSinopsis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ComboBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(BtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(61, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LblGenero)
-                            .addComponent(LblTitulo)
-                            .addComponent(LblImagen))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LblDuracion)
-                        .addGap(79, 79, 79))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addComponent(BtnComprar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnBuscar)
-                    .addComponent(ComboBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(LblImagen)
-                .addGap(91, 91, 91)
-                .addComponent(LblTitulo)
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblDirecto)
-                    .addComponent(LblGenero)
-                    .addComponent(LblDuracion))
-                .addGap(37, 37, 37)
-                .addComponent(LblSinopsis, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(BtnComprar)
-                .addGap(46, 46, 46))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -237,7 +182,8 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
         SelecionPelicula();
         canbiarTamaño();
     }//GEN-LAST:event_BtnBuscarActionPerformed
-
+    
+    // aqui una validacion para que seleccione una pelicula 
     private void BtnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnComprarActionPerformed
         // TODO add your handling code here:
         if (pelicula != null) {
@@ -260,7 +206,6 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
     private javax.swing.JLabel LblDirecto;
     private javax.swing.JLabel LblDuracion;
     private javax.swing.JLabel LblGenero;
-    private javax.swing.JLabel LblImagen;
     private javax.swing.JLabel LblSinopsis;
     private javax.swing.JLabel LblTitulo;
     private javax.swing.JPanel jPanel1;

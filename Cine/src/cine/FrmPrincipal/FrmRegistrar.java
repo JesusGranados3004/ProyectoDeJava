@@ -27,6 +27,8 @@ public class FrmRegistrar extends javax.swing.JFrame {
         conn = new ConexionBD();
     }
     
+    
+    // se le pasan los parametros necesarios para la creacion de la cuneta del usuario 
     private void altaClienteCuenta() {
         
         try {
@@ -50,7 +52,7 @@ public class FrmRegistrar extends javax.swing.JFrame {
             cstmt.setString(6, password);
 
             cstmt.execute();
-            JOptionPane.showMessageDialog(null, "Cliente y cuenta creados");
+            JOptionPane.showMessageDialog(null, "Cuenta creados");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());

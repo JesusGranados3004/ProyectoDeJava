@@ -32,6 +32,10 @@ public class FrmLogin extends javax.swing.JFrame {
         menu = new JIFrmMenu();
     }
     
+    //se le pasan las TxtUsuario y TxtPassword para validar si
+    //lo ingresado por el usuario es su contraseña e usuario
+    //y internamente hace una validacin de roles para que les aparesca o no 
+    //siertas opciones que son privadas dependiendo del rol
     public void comprovarInicio()
     {
         String user = TxtUsuario.getText();
@@ -55,16 +59,19 @@ public class FrmLogin extends javax.swing.JFrame {
                         ide = resultado.getInt("empleado_id");
                         menu.mostrarMenuGestion(true);
                         menu.mostrarMenuREporte(true);
+                        menu.mostrarMenuRegistrar(true);
                     }else if(rol.equalsIgnoreCase("empleado")){
                         id = 0;
                         ide = resultado.getInt("empleado_id");
                         menu.mostrarMenuGestion(false);
                         menu.mostrarMenuREporte(false);
+                        menu.mostrarMenuRegistrar(false);
                     }else {
                         id = resultado.getInt("cliente_id");
                         ide = 0;
                         menu.mostrarMenuGestion(false); 
                         menu.mostrarMenuREporte(false); 
+                        menu.mostrarMenuRegistrar(false); 
                     }
                     Cuenta cuenta = new Cuenta(id, ide,user, rol);
                     Sesion.usuarioActivo = cuenta;
@@ -195,11 +202,13 @@ public class FrmLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    // para ejecutar el metodo ya mencionado
     private void BtnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInicioActionPerformed
         comprovarInicio();        // TODO add your handling code here:
     }//GEN-LAST:event_BtnInicioActionPerformed
 
+    
+    // te dirije para la parte de registro del cliente
     private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
         // TODO add your handling code here:
         FrmRegistrar registro = new FrmRegistrar();

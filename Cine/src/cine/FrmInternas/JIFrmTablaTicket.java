@@ -29,6 +29,9 @@ public class JIFrmTablaTicket extends javax.swing.JInternalFrame {
         mostrarTodosMisTickets();
     }
     
+    // se consultan los datos necesarios para llenar la tabla a la base de datos
+    // y se hace una validacion para saber quien es el que esta haciendo esa 
+    //consulta 
     public void mostrarTodosMisTickets() {
         DefaultTableModel modelo = new DefaultTableModel(
             new String[]{"Ticket", "Asiento", "Inicio", "Precio", "Película", "Sala"}, 0);

@@ -38,7 +38,11 @@ public class JIFrmAgregarPeliculas extends javax.swing.JInternalFrame {
         LlenarComboGenero();
     }
 
-    
+    // aqui hay varias validacines la primera es para ver si uno de los campos no a sido rellenado
+    // con la informacion necesaria , otra es para que en los campos de genero nada mas selecione una y 
+    // no anvas ya que una es de una ya existente y otra es de una nueva y la otra es por si anbas no estan seleccionadas
+    //o rrellenadas  se hace una validacion para saber cual fue rellenada y ese valor mandarselo a la base de datos
+    //ya despues se guarda la informacion en la base de datos
     public void AgrgarPelicula(){
         Date fecha = DataFecha.getDate();
         
@@ -92,6 +96,7 @@ public class JIFrmAgregarPeliculas extends javax.swing.JInternalFrame {
         }
     }
     
+    // y aqui se consultan ya los generos ya existentes para mostrarlos en el combo
     public void LlenarComboGenero(){
         try {
             Connection con = conn.Conexion();

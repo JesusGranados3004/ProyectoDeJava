@@ -36,7 +36,7 @@ public class JIFrmFunciones extends javax.swing.JInternalFrame {
     ConexionBD conn;
     public final ArrayList<Integer> idsFuncion = new ArrayList<>();
     public final ArrayList<Integer> idsSala    = new ArrayList<>();
-    String [] encabezado = {"ID","Titulo","Sala","Inicio","Fin","Precio"};
+    String [] encabezado = {"Titulo","Sala","Inicio","Fin","Precio"};
     
     public JIFrmFunciones() {
         initComponents();
@@ -45,7 +45,8 @@ public class JIFrmFunciones extends javax.swing.JInternalFrame {
         LlenarComboSala(ComboSala, sala);
     }
     
-    
+    // aqui se ejecuta el metodo que consulta los datos necesaruos para 
+    // llenar la tabla y posterior se llena la tabla
     public void mostrarInfo(){
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(encabezado);
@@ -53,6 +54,8 @@ public class JIFrmFunciones extends javax.swing.JInternalFrame {
         LlenarTablaFuncion(TableFuncion, modelo,peliculaId);
     }
     
+    // esto es para que el usuario tenga encuenta de como ingresar la hora
+    // de inicio de la funcion
     public void AgregarGuia(){
         if (TxtInicio.getText().isEmpty()) {
             TxtInicio.setForeground(Color.GRAY);
@@ -60,6 +63,8 @@ public class JIFrmFunciones extends javax.swing.JInternalFrame {
         }
     }
     
+    // y esta posteriormente es para quitar la guia ya sea cuando unda 
+    // para ingresar los datos
     public void QuitarGuia(){
         if (TxtInicio.getText().equals("HH:mm:ss")) {
             TxtInicio.setText("");
@@ -67,7 +72,8 @@ public class JIFrmFunciones extends javax.swing.JInternalFrame {
         }
     }
     
-    
+    //aqui se le mandan ya los datos recolectados a la base de datos para 
+    //que guarde la funcion que se quiere programar 
     public void AgrgarFuncion(){
         Date fecha = DateFecha.getDate();
         if(ComboPelicula.getSelectedIndex() > 0 && ComboSala.getSelectedIndex() > 0 
@@ -117,6 +123,10 @@ public class JIFrmFunciones extends javax.swing.JInternalFrame {
         }
     }
     
+    
+    // aqui se llena el combo con peliula para asi guardar todos sus atributos
+    // y la mostramos con el nombre para la seleccion de la pelicula que se
+    // quiere programar
     public void LlenarComboPeliculas(JComboBox Combo,Peliculas pelicula){
         try {
             Connection con = conn.Conexion();
@@ -146,6 +156,8 @@ public class JIFrmFunciones extends javax.swing.JInternalFrame {
         }
     }
     
+    
+    // aqui es lo mismo pero en ves de las peliculas es la sala
     public void LlenarComboSala(JComboBox Combo,Salas sala){
         try {
             Connection con = conn.Conexion();
@@ -170,6 +182,9 @@ public class JIFrmFunciones extends javax.swing.JInternalFrame {
         }
     }
     
+    
+    // aqui por medio de una validacion que compruebe si la variable esta vacia o no se consultan las funciones programadas
+    // y mostramos en la tabla
     public void LlenarTablaFuncion(JTable tabla, DefaultTableModel modelo, int peliculaId) {
         modelo.setRowCount(0);          
         idsFuncion.clear();
@@ -398,7 +413,7 @@ public class JIFrmFunciones extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         AgregarGuia();
     }//GEN-LAST:event_TxtInicioFocusLost
-
+    // para ejecutar los metodos que guardan y muestran la informacion de la funcion
     private void BtnAgregarFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarFuncionActionPerformed
         // TODO add your handling code here:
         AgrgarFuncion();

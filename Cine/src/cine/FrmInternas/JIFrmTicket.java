@@ -34,6 +34,7 @@ public class JIFrmTicket extends javax.swing.JInternalFrame {
     ArrayList<Integer> idreserva = new  ArrayList();
     private Cuenta cuenta;
  
+    //se le ponen variables al constructor para asi facilitar el tras paso de informacion
     public JIFrmTicket(int id,String titulo,String Sala,String Inicio,String Fin,double total,Cuenta cuenta, ArrayList asientoId) {
         initComponents();
         this.id = id;
@@ -47,6 +48,9 @@ public class JIFrmTicket extends javax.swing.JInternalFrame {
         silla = new ArrayList();
         conn = new ConexionBD();
         cambiardatos();
+        
+        // se captura cuando el usuario le de x para cerrar la ventana y asi 
+        //no guardar los asientos que selecciono 
         addInternalFrameListener(new javax.swing.event.InternalFrameAdapter() {
             @Override
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent e) {
@@ -60,6 +64,8 @@ public class JIFrmTicket extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
     }
     
+    
+    //aqui se cambian los lbl para mostrar la informacion de la boleta o ticket
     public void cambiardatos(){
         Lblpelicula.setText(titulo);
         LblInicio.setText(Inicio);
@@ -78,6 +84,9 @@ public class JIFrmTicket extends javax.swing.JInternalFrame {
         sillas = texto.toString();
     }
     
+    // se insertan la reserva que esta haciendo el usuario,
+    //internamente se hace una validacion para saver quien esta haciendo la 
+    //reserva y en una variable se guarda la id de la reserva para utilizar en otros metodos
     public void insertarReserva(int idc , double total){
         int ide = cuenta.getIde();
         try {
@@ -107,6 +116,8 @@ public class JIFrmTicket extends javax.swing.JInternalFrame {
         }
     }
     
+    // el metodo para cuando se cierre la ventana en la base de datos no se guarde los 
+    //asientos seleccionados y de una lista que guarda las id de los asientos se optienen sus id
     private void cancelarAsiento() {
         for (int i = 0; i < asientoId.size(); i++) {
             int idAsiento = asientoId.get(i);
@@ -283,7 +294,9 @@ public class JIFrmTicket extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ 
+    //para ejecutar el metodo paras guardar la reserva y lo dirija a la 
+    //ventana pago
     private void BtnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnComprarActionPerformed
         // TODO add your handling code here:
            insertarReserva(cuenta.getId(),  total);
