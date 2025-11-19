@@ -522,10 +522,19 @@ END //
 CALL cliente_cuenta(
   'Jesus',
   'Granados',
-  'jesusgranados@gmail.com',
   '3001234567',
-  'jesus3',
-  'jesus3003'
+  'jesusgranados@gmail.com',
+  'jesus',
+  '67890'
+);//
+
+CALL cliente_cuenta(
+  'Luis',
+  'Sandoval',
+  '3001276493',
+  'luissando@gmail.com',
+  'sando',
+  '2468'
 );//
 
 CALL empleado_cuenta(
@@ -533,9 +542,9 @@ CALL empleado_cuenta(
   'Gómez',
   'admin',
   '3109876543',
-  'carlos.gomez@gmail.com',
-  'jesus',
-  'jesus3004'
+  'carlos.gomez@gmail.c.om',
+  'admin',
+  '3004'
 );//
 
 CALL empleado_cuenta(

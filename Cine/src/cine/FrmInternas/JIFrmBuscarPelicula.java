@@ -117,6 +117,11 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
         LblGenero = new javax.swing.JLabel();
         LblSinopsis = new javax.swing.JLabel();
         LblTitulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -133,7 +138,7 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
                 BtnComprarActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 453, -1, -1));
+        jPanel1.add(BtnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
 
         BtnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BtnBuscar.setText("Buscar");
@@ -154,11 +159,11 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
 
         LblDuracion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         LblDuracion.setText("jLabel3");
-        jPanel1.add(LblDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 215, -1, -1));
+        jPanel1.add(LblDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
 
         LblGenero.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         LblGenero.setText("jLabel4");
-        jPanel1.add(LblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 215, -1, -1));
+        jPanel1.add(LblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
 
         LblSinopsis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         LblSinopsis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -166,11 +171,31 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
         LblSinopsis.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         LblSinopsis.setMaximumSize(new java.awt.Dimension(300, 15));
         LblSinopsis.setPreferredSize(new java.awt.Dimension(400, 80));
-        jPanel1.add(LblSinopsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 400, 140));
+        jPanel1.add(LblSinopsis, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 400, 140));
 
         LblTitulo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         LblTitulo.setText("jLabel6");
-        jPanel1.add(LblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 128, -1, -1));
+        jPanel1.add(LblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("TITULO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("DIRECTOR");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("GENERO");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("DURACION");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("SIPNOSIS");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
         getContentPane().add(jPanel1);
 
@@ -208,6 +233,11 @@ public class JIFrmBuscarPelicula extends javax.swing.JInternalFrame {
     private javax.swing.JLabel LblGenero;
     private javax.swing.JLabel LblSinopsis;
     private javax.swing.JLabel LblTitulo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

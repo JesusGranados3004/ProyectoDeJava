@@ -107,7 +107,6 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         BtnInicio = new javax.swing.JButton();
         TxtPassword = new javax.swing.JPasswordField();
-        BtnRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,14 +133,6 @@ public class FrmLogin extends javax.swing.JFrame {
 
         TxtPassword.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        BtnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        BtnRegistrar.setText("Registrar");
-        BtnRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegistrarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -154,8 +145,7 @@ public class FrmLogin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(BtnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TxtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,11 +170,9 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(TxtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                .addGap(57, 57, 57)
                 .addComponent(BtnInicio)
-                .addGap(28, 28, 28)
-                .addComponent(BtnRegistrar)
-                .addGap(21, 21, 21))
+                .addGap(55, 55, 55))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,14 +196,6 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnInicioActionPerformed
 
     
-    // te dirije para la parte de registro del cliente
-    private void BtnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarActionPerformed
-        // TODO add your handling code here:
-        FrmRegistrar registro = new FrmRegistrar();
-        registro.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_BtnRegistrarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -254,7 +234,6 @@ public class FrmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnInicio;
-    private javax.swing.JButton BtnRegistrar;
     private javax.swing.JPasswordField TxtPassword;
     private javax.swing.JTextField TxtUsuario;
     private javax.swing.JLabel jLabel1;

@@ -13,6 +13,7 @@ import cine.FrmInternas.JIFrmFunciones;
 import cine.FrmInternas.JIFrmTablapelicula;
 import cine.FrmInternas.JIFrmBuscarPelicula;
 import cine.Clases.Sesion;
+import cine.FrmInternas.JIFrmGestionSalas;
 import javax.swing.JFrame;
 
 /**
@@ -65,6 +66,7 @@ public class JIFrmMenu extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         MenuFuncion = new javax.swing.JMenuItem();
+        MenuSalas = new javax.swing.JMenuItem();
         MenuRegistrar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,11 +75,11 @@ public class JIFrmMenu extends javax.swing.JFrame {
         PrinsipalDesktop.setLayout(PrinsipalDesktopLayout);
         PrinsipalDesktopLayout.setHorizontalGroup(
             PrinsipalDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 939, Short.MAX_VALUE)
         );
         PrinsipalDesktopLayout.setVerticalGroup(
             PrinsipalDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 616, Short.MAX_VALUE)
         );
 
         jMenu2.setBackground(new java.awt.Color(139, 220, 224));
@@ -149,6 +151,14 @@ public class JIFrmMenu extends javax.swing.JFrame {
             }
         });
         MenuGestion.add(MenuFuncion);
+
+        MenuSalas.setText("Gestionar Salas");
+        MenuSalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuSalasActionPerformed(evt);
+            }
+        });
+        MenuGestion.add(MenuSalas);
 
         jMenuBar1.add(MenuGestion);
 
@@ -240,6 +250,12 @@ public class JIFrmMenu extends javax.swing.JFrame {
         empleado.setVisible(true);
     }//GEN-LAST:event_MenuRegistrarMouseClicked
 
+    private void MenuSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSalasActionPerformed
+        JIFrmGestionSalas salas = new JIFrmGestionSalas();
+        PrinsipalDesktop.add(salas);
+        salas.setVisible(true);
+    }//GEN-LAST:event_MenuSalasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,6 +298,7 @@ public class JIFrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu MenuPerfil;
     private javax.swing.JMenu MenuRegistrar;
     private javax.swing.JMenu MenuReportes;
+    private javax.swing.JMenuItem MenuSalas;
     private javax.swing.JDesktopPane PrinsipalDesktop;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

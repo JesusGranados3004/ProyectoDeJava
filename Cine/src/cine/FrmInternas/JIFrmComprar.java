@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
@@ -35,7 +36,7 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
     Peliculas pelicula;
     Funcion funcion;
     
-    ArrayList<JRadioButton> listabotones = new ArrayList();
+    ArrayList<JCheckBox> listabotones = new ArrayList<>();
     ArrayList<Integer> asientosId = new ArrayList();
     private final ArrayList<Integer> idsFuncion = new ArrayList<>();
     private final ArrayList<Integer> idsSala    = new ArrayList<>();
@@ -75,7 +76,8 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
             columnas = 7;
         }
         for (int i = 1; i <= cantidad; i++) {
-            JRadioButton silla = new JRadioButton("Silla " + i);
+            JCheckBox silla = new JCheckBox("Silla " + i);
+
 
             int fila = (i - 1) / columnas;
             int col = (i - 1) % columnas;
@@ -98,7 +100,7 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
     public void calcularTotal(){
         int seleccionadas = 0;
         for(int i = 0; i < listabotones.size(); i++){
-            JRadioButton rb = listabotones.get(i);  
+            JCheckBox rb = listabotones.get(i);  
             if(rb.isSelected()){ 
                 seleccionadas++;
             }
@@ -109,58 +111,60 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
     
     // aqui guardamos la sillas en la base de datos y guardamos las id en una lista para utilizar en otros metodos
     private ArrayList<Integer> actualizarListaSillas(JIFrmTicket ticket) {
-        ArrayList<Integer> seleccionadas = new ArrayList<>();
-        for (int i = 0; i < listabotones.size(); i++) {
-            JRadioButton rb = listabotones.get(i);
-            if (rb.isSelected()) {
-                int num = Integer.parseInt(rb.getText().substring(6));
-                seleccionadas.add(num);
-               
-                try {
-                    Connection con = conn.Conexion();
+         ArrayList<Integer> seleccionadas = new ArrayList<>();
 
-                    String sql = "CALL InsertarAsiento(?, ?, ?, ?)";
-                    CallableStatement cstmt = con.prepareCall(sql);
-                    cstmt.setInt(1, num);
-                    cstmt.setInt(2, ids);
-                    cstmt.setInt(3, id);
-                    cstmt.registerOutParameter(4, Types.INTEGER);
-                    
-                    cstmt.execute();
-                    asientosId.clear();
-                    asientoId = cstmt.getInt(4);
-                    asientosId.add(asientoId);
-                    
-                    JOptionPane.showMessageDialog(null, "Silla reservada correctamente.");
-                    getDesktopPane().add(ticket);
-                    ticket.setVisible(true);
-                    this.setVisible(false);
+    for (JCheckBox rb : listabotones) {
 
-                } catch (SQLException e) {
-                    if ("45000".equals(e.getSQLState())) {
-                        JOptionPane.showMessageDialog(
-                                null,
-                                "La silla " + num + " ya está ocupada.",
-                                "Duplicado",
-                                JOptionPane.WARNING_MESSAGE
-                               
-                        );
-                        break;
-                    } else {
-                        JOptionPane.showMessageDialog(
-                                null,
-                                "Error al guardar: " + e.getMessage(),
-                                "Error",
-                                JOptionPane.ERROR_MESSAGE
-                        );
-                        break;
-                    }
+        if (rb.isSelected()) {
+
+            int num = Integer.parseInt(rb.getText().substring(6));
+            seleccionadas.add(num);
+
+            try {
+
+                Connection con = conn.Conexion();
+                String sql = "CALL InsertarAsiento(?, ?, ?, ?)";
+                CallableStatement cstmt = con.prepareCall(sql);
+
+                cstmt.setInt(1, num);
+                cstmt.setInt(2, ids); // id de sala
+                cstmt.setInt(3, id);  // id de función
+                cstmt.registerOutParameter(4, Types.INTEGER);
+
+                cstmt.execute();
+
+                //  Guardamos TODOS los IDs sin borrar los anteriores
+                int asientoNuevoId = cstmt.getInt(4);
+                asientosId.add(asientoNuevoId);
+
+            } catch (SQLException e) {
+
+                if ("45000".equals(e.getSQLState())) {
+
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "La silla " + num + " ya está ocupada.",
+                        "Asiento ocupado",
+                        JOptionPane.WARNING_MESSAGE
+                    );
+
+                } else {
+
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "Error al guardar: " + e.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                    );
                 }
             }
         }
-        return seleccionadas;   
+    }
+
+    return seleccionadas;  
     }
     
+
     // aqui se consulta a la base de datos los datos necesarios para llenar la tabla
     public void LlenarTablaFuncion(JTable tabla, DefaultTableModel modelo, int peliculaId) {
         modelo.setRowCount(0);          
@@ -351,10 +355,18 @@ public class JIFrmComprar extends javax.swing.JInternalFrame {
     private void BtnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservarActionPerformed
         // TODO add your handling code here:
 
-        JIFrmTicket ticket = new JIFrmTicket(this.id, titulo, Sala, Inicio, Fin, total,Sesion.usuarioActivo, asientosId);
-        ArrayList<Integer> sillasElegidas = actualizarListaSillas(ticket); 
-        ticket.silla.addAll(sillasElegidas);
-        ticket.cambiardatos();          
+        JIFrmTicket ticket = new JIFrmTicket(this.id, titulo, Sala, Inicio, Fin, total, Sesion.usuarioActivo, asientosId);
+
+    ArrayList<Integer> sillasElegidas = actualizarListaSillas(ticket);
+
+    // Mandamos todas las sillas al ticket
+    ticket.silla.addAll(sillasElegidas);
+    ticket.cambiardatos();
+
+    // Ahora sí se abre el ticket
+    getDesktopPane().add(ticket);
+    ticket.setVisible(true);
+    this.setVisible(false);         
 
     }//GEN-LAST:event_BtnReservarActionPerformed
 

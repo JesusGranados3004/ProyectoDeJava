@@ -13,7 +13,7 @@ public class ConexionBD {
     
     // Credenciales y parámetros de conexión
     String USER = "root";       // Usuario de la base de datos
-    String PASSWORD = "3004";   // Contraseña del usuario
+    String PASSWORD = "1082859679";   // Contraseña del usuario
     String NAME = "Cine";       // Nombre de la base de datos
     String IP = "localhost";    // Dirección del servidor (en este caso, local)
     String PORT = "3306";       // Puerto de conexión predeterminado de MySQL
